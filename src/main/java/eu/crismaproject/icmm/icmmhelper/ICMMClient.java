@@ -177,7 +177,7 @@ public final class ICMMClient {
 
         int maxId = -1;
         for (final Map res : be) {
-            final int id = Integer.parseInt(String.valueOf(res.get("id")));
+            final int id = Integer.parseInt(String.valueOf(res.get("id"))); // NOI18N
             if (maxId < id) {
                 maxId = id;
             }
@@ -209,21 +209,40 @@ public final class ICMMClient {
     /**
      * DOCUMENT ME!
      *
-     * @param   t  DOCUMENT ME!
+     * @param  t  DOCUMENT ME!
+     */
+    public void putTransition(final Transition t) {
+        putEntity(t);
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param  w  DOCUMENT ME!
+     */
+    public void putWorldstate(final Worldstate w) {
+        putEntity(w);
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   <T>     DOCUMENT ME!
+     * @param   entity  DOCUMENT ME!
      *
      * @throws  RuntimeException  DOCUMENT ME!
      */
-    public void putTransition(final Transition t) {
-        validateRef(t);
+    public <T extends BaseEntity> void putEntity(final T entity) {
+        validateRef(entity);
 
         final WebTarget target =
-            webTarget.path("CRISMA.transitions/" + t.getId()) // NOI18N
-            .queryParam("requestResultingInstance", false);   // NOI18N
+            webTarget.path("CRISMA." + entity.getEntityName() + "/" + entity.getId()) // NOI18N
+            .queryParam("requestResultingInstance", false);                           // NOI18N
         final Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON_TYPE);
-        final Response response = builder.put(Entity.json(t));
+        final Response response = builder.put(Entity.json(entity));
 
         if ((response.getStatus() < 200) || (response.getStatus() > 210)) {
-            throw new RuntimeException("could not put transition: " + response); // NOI18N
+            throw new RuntimeException("could not put entity: " + response); // NOI18N
         }
     }
 
