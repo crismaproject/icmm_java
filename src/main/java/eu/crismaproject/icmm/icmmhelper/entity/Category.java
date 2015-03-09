@@ -27,8 +27,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @EqualsAndHashCode(callSuper = true)
 public class Category extends BaseEntity {
 
+    //~ Static fields/initializers ---------------------------------------------
+
+    public static final String ENTITY_NAME = "categories"; // NOI18N
+
     //~ Instance fields --------------------------------------------------------
 
     private String key;
     private Classification classification;
+
+    //~ Methods ----------------------------------------------------------------
+
+    @Override
+    public String getEntityName() {
+        return ENTITY_NAME;
+    }
 }

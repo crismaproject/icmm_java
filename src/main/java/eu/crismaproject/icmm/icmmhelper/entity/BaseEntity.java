@@ -7,6 +7,8 @@
 ****************************************************/
 package eu.crismaproject.icmm.icmmhelper.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NoArgsConstructor
 @ToString(of = { "$self", "$ref", "id" })
 @EqualsAndHashCode(of = { "$self", "$ref", "id" })
-public class BaseEntity {
+public abstract class BaseEntity {
 
     //~ Instance fields --------------------------------------------------------
 
@@ -57,4 +59,24 @@ public class BaseEntity {
         this.$ref = $ref;
         this.id = id;
     }
+
+    //~ Methods ----------------------------------------------------------------
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    @JsonIgnore
+    public String getRef() {
+        return ($ref == null) ? $self : $ref;
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    @JsonIgnore
+    public abstract String getEntityName();
 }

@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * DOCUMENT ME!
  *
  * @author   martin.scholl@cismet.de
- * @version  $Revision$, $Date$
+ * @version  0.1
  */
 @XmlRootElement
 @NoArgsConstructor
@@ -30,9 +30,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @EqualsAndHashCode(callSuper = true)
 public class Worldstate extends BaseEntity {
 
+    //~ Static fields/initializers ---------------------------------------------
+
+    public static final String ENTITY_NAME = "worldstates"; // NOI18N
+
     //~ Instance fields --------------------------------------------------------
 
-    private Integer id;
     private String name;
     private String description;
     private List<Category> categories;
@@ -43,4 +46,11 @@ public class Worldstate extends BaseEntity {
     private DataItem iccdata;
     private List<Worldstate> childworldstates;
     private List<DataItem> worldstatedata;
+
+    //~ Methods ----------------------------------------------------------------
+
+    @Override
+    public String getEntityName() {
+        return ENTITY_NAME;
+    }
 }

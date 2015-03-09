@@ -8,8 +8,9 @@
 package eu.crismaproject.icmm.icmmhelper;
 
 import eu.crismaproject.icmm.icmmhelper.entity.BaseEntity;
-import eu.crismaproject.icmm.icmmhelper.entity.EntityIdentifier;
 import eu.crismaproject.icmm.icmmhelper.entity.GenericCollectionResource;
+import eu.crismaproject.icmm.icmmhelper.entity.Transition;
+import eu.crismaproject.icmm.icmmhelper.entity.Transition.Status;
 import eu.crismaproject.icmm.icmmhelper.entity.Worldstate;
 import eu.crismaproject.icmm.icmmhelper.entity.WorldstateCollectionResource;
 
@@ -18,11 +19,10 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -35,10 +35,6 @@ import javax.ws.rs.core.Response;
  * @version  0.1
  */
 public final class ICMMClient {
-
-    //~ Static fields/initializers ---------------------------------------------
-
-    private static final Pattern entityIdentifierPattern = Pattern.compile("/(\\w+)\\.(\\w+)(/(\\d+))?");
 
     //~ Instance fields --------------------------------------------------------
 
@@ -191,6 +187,62 @@ public final class ICMMClient {
     }
 
     /**
+     * Creates a new self reference for a new entity identified by the given parameter. Uses
+     * {@link #getNextId(java.lang.String)} to produce the new ref. Thus this ref can be used for any newly create
+     * object that shall be pushed to the ICMM.
+     *
+     * @param   <T>     DOCUMENT ME!
+     * @param   entity  DOCUMENT ME!
+     *
+     * @return  the given entity with the $self reference and id set
+     */
+    public <T extends BaseEntity> T insertSelfRefAndId(final T entity) {
+        final String rawName = getEntityName(entity.getEntityName());
+        final int id = getNextId(rawName);
+
+        entity.set$self("/CRISMA." + rawName + "/" + id);
+        entity.setId(id);
+
+        return entity;
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   t  DOCUMENT ME!
+     *
+     * @throws  RuntimeException  DOCUMENT ME!
+     */
+    public void putTransition(final Transition t) {
+        validateRef(t);
+
+        final WebTarget target =
+            webTarget.path("CRISMA.transitions/" + t.getId()) // NOI18N
+            .queryParam("requestResultingInstance", false);   // NOI18N
+        final Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON_TYPE);
+        final Response response = builder.put(Entity.json(t));
+
+        if ((response.getStatus() < 200) || (response.getStatus() > 210)) {
+            throw new RuntimeException("could not put transition: " + response); // NOI18N
+        }
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   entity  DOCUMENT ME!
+     *
+     * @throws  IllegalStateException  DOCUMENT ME!
+     */
+    private void validateRef(final BaseEntity entity) {
+        if (entity.get$self() == null) {
+            throw new IllegalStateException("entity must have a $self reference: " + entity);          // NOI18N
+        } else if (entity.get$ref() != null) {
+            throw new IllegalStateException("entity must not have a $ref if $self is set: " + entity); // NOI18N
+        }
+    }
+
+    /**
      * DOCUMENT ME!
      *
      * @param   value  DOCUMENT ME!
@@ -204,35 +256,6 @@ public final class ICMMClient {
             return value.substring(index + 1);
         } else {
             return value;
-        }
-    }
-
-    /**
-     * DOCUMENT ME!
-     *
-     * @param   entity  DOCUMENT ME!
-     *
-     * @return  DOCUMENT ME!
-     *
-     * @throws  IllegalStateException  DOCUMENT ME!
-     */
-    public static EntityIdentifier getEntityIdentifier(final BaseEntity entity) {
-        final String ref = (entity.get$self() == null) ? entity.get$ref() : entity.get$self();
-
-        final Matcher matcher = entityIdentifierPattern.matcher(ref);
-
-        if (matcher.matches()) {
-            final String domain = matcher.group(1);
-            final String entityName = matcher.group(2);
-            final Integer id = (matcher.group(4) == null) ? null : Integer.parseInt(matcher.group(4));
-
-            if ((domain == null) || (entityName == null)) {
-                throw new IllegalStateException("entity with incorrect ref: " + ref); // NOI18N
-            }
-
-            return new EntityIdentifier(domain, entityName, id);
-        } else {
-            throw new IllegalStateException("entity with incorrect ref: " + ref); // NOI18N
         }
     }
 }

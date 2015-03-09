@@ -29,9 +29,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @EqualsAndHashCode(callSuper = true)
 public final class DataItem extends BaseEntity {
 
+    //~ Static fields/initializers ---------------------------------------------
+
+    public static final String ENTITY_NAME = "dataitems"; // NOI18N
+
     //~ Instance fields --------------------------------------------------------
 
-    private Integer id;
     private String name;
     private String description;
     private Date lastmodified;
@@ -42,4 +45,11 @@ public final class DataItem extends BaseEntity {
     private String actualaccessinfo;
     private SpatialCoverage spatialcoverage;
     private Worldstate worldstate;
+
+    //~ Methods ----------------------------------------------------------------
+
+    @Override
+    public String getEntityName() {
+        return ENTITY_NAME;
+    }
 }

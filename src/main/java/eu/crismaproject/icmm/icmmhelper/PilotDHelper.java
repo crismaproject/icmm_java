@@ -11,7 +11,7 @@ package eu.crismaproject.icmm.icmmhelper;
  * DOCUMENT ME!
  *
  * @author   martin.scholl@cismet.de
- * @version  $Revision$, $Date$
+ * @version  0.1
  */
 public final class PilotDHelper {
 
