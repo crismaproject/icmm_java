@@ -10,7 +10,6 @@ package eu.crismaproject.icmm.icmmhelper;
 import eu.crismaproject.icmm.icmmhelper.entity.BaseEntity;
 import eu.crismaproject.icmm.icmmhelper.entity.GenericCollectionResource;
 import eu.crismaproject.icmm.icmmhelper.entity.Transition;
-import eu.crismaproject.icmm.icmmhelper.entity.Transition.Status;
 import eu.crismaproject.icmm.icmmhelper.entity.Worldstate;
 import eu.crismaproject.icmm.icmmhelper.entity.WorldstateCollectionResource;
 
@@ -51,6 +50,7 @@ public final class ICMMClient {
     public ICMMClient(final String apiurl) {
         final ClientConfig clientConfig = new ClientConfig();
         clientConfig.register(new JacksonFeature());
+        clientConfig.register(ISODateJacksonObjectMapperProvider.class);
 
         client = ClientBuilder.newClient(clientConfig);
         webTarget = client.target(apiurl);
@@ -200,7 +200,7 @@ public final class ICMMClient {
         final String rawName = getEntityName(entity.getEntityName());
         final int id = getNextId(rawName);
 
-        entity.set$self("/CRISMA." + rawName + "/" + id);
+        entity.set$self("/CRISMA." + rawName + "/" + id); // NOI18N
         entity.setId(id);
 
         return entity;
