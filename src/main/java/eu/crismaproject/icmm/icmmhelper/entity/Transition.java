@@ -12,13 +12,15 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * DOCUMENT ME!
  *
  * @author   martin.scholl@cismet.de
- * @version  $Revision$, $Date$
+ * @version  0.1
  */
 @XmlRootElement
 @NoArgsConstructor
@@ -34,4 +36,7 @@ public class Transition extends BaseEntity {
     private String description;
     private String transitionstatuscontenttype;
     private String transitionstatus;
+    private String performedsimulation;
+    private List performedmanipulations;
+    private String simulationcontrolparameter;
 }

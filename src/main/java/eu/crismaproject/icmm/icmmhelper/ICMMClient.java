@@ -7,6 +7,8 @@
 ****************************************************/
 package eu.crismaproject.icmm.icmmhelper;
 
+import eu.crismaproject.icmm.icmmhelper.entity.BaseEntity;
+import eu.crismaproject.icmm.icmmhelper.entity.EntityIdentifier;
 import eu.crismaproject.icmm.icmmhelper.entity.GenericCollectionResource;
 import eu.crismaproject.icmm.icmmhelper.entity.Worldstate;
 import eu.crismaproject.icmm.icmmhelper.entity.WorldstateCollectionResource;
@@ -16,6 +18,8 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -31,6 +35,10 @@ import javax.ws.rs.core.Response;
  * @version  0.1
  */
 public final class ICMMClient {
+
+    //~ Static fields/initializers ---------------------------------------------
+
+    private static final Pattern entityIdentifierPattern = Pattern.compile("/(\\w+)\\.(\\w+)(/(\\d+))?");
 
     //~ Instance fields --------------------------------------------------------
 
@@ -97,6 +105,66 @@ public final class ICMMClient {
     /**
      * DOCUMENT ME!
      *
+     * @param   id  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    public Worldstate getWorldstate(final int id) {
+        return getWorldstate(id, 1, true, true);
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   id     DOCUMENT ME!
+     * @param   level  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    public Worldstate getWorldstate(final int id, final int level) {
+        return getWorldstate(id, level, true, true);
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   id           DOCUMENT ME!
+     * @param   level        DOCUMENT ME!
+     * @param   deduplicate  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    public Worldstate getWorldstate(final int id, final int level, final boolean deduplicate) {
+        return getWorldstate(id, level, deduplicate, true);
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   id              DOCUMENT ME!
+     * @param   level           DOCUMENT ME!
+     * @param   deduplicate     DOCUMENT ME!
+     * @param   omitNullValues  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    public Worldstate getWorldstate(final int id,
+            final int level,
+            final boolean deduplicate,
+            final boolean omitNullValues) {
+        final WebTarget target =
+            webTarget.path("CRISMA.worldstates/" + id) // NOI18N
+            .queryParam("level", level)                // NOI18N
+            .queryParam("deduplicate", deduplicate);   // NOI18N
+        final Invocation.Builder builder = target.request(MediaType.APPLICATION_JSON_TYPE);
+        final Response response = builder.get();
+
+        return response.readEntity(Worldstate.class);
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
      * @param   entity  DOCUMENT ME!
      *
      * @return  DOCUMENT ME!
@@ -136,6 +204,35 @@ public final class ICMMClient {
             return value.substring(index + 1);
         } else {
             return value;
+        }
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   entity  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     *
+     * @throws  IllegalStateException  DOCUMENT ME!
+     */
+    public static EntityIdentifier getEntityIdentifier(final BaseEntity entity) {
+        final String ref = (entity.get$self() == null) ? entity.get$ref() : entity.get$self();
+
+        final Matcher matcher = entityIdentifierPattern.matcher(ref);
+
+        if (matcher.matches()) {
+            final String domain = matcher.group(1);
+            final String entityName = matcher.group(2);
+            final Integer id = (matcher.group(4) == null) ? null : Integer.parseInt(matcher.group(4));
+
+            if ((domain == null) || (entityName == null)) {
+                throw new IllegalStateException("entity with incorrect ref: " + ref); // NOI18N
+            }
+
+            return new EntityIdentifier(domain, entityName, id);
+        } else {
+            throw new IllegalStateException("entity with incorrect ref: " + ref); // NOI18N
         }
     }
 }

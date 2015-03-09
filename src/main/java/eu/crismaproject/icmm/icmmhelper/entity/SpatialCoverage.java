@@ -12,8 +12,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -27,15 +25,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class DataDescriptor extends BaseEntity {
+public class SpatialCoverage extends BaseEntity {
 
     //~ Instance fields --------------------------------------------------------
 
-    private String name;
-    private String description;
-    private String transitionstatuscontenttype;
-    private String transitionstatus;
-    private List<Category> categories;
-    private String defaultaccessinfocontenttype;
-    private String defaultaccessinfo;
+    // TODO: convert to JTS Geometry if needed
+    private String geo_field;
 }

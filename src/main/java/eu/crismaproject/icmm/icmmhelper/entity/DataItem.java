@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * DOCUMENT ME!
  *
  * @author   martin.scholl@cismet.de
- * @version  $Revision$, $Date$
+ * @version  0.1
  */
 @XmlRootElement
 @NoArgsConstructor
@@ -40,4 +40,6 @@ public final class DataItem extends BaseEntity {
     private DataDescriptor datadescriptor;
     private String actualaccessinfocontenttype;
     private String actualaccessinfo;
+    private SpatialCoverage spatialcoverage;
+    private Worldstate worldstate;
 }
