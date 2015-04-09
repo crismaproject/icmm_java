@@ -143,4 +143,39 @@ public class PilotDHelper {
 
         return schemaItem;
     }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   layername    DOCUMENT ME!
+     * @param   displayname  DOCUMENT ME!
+     * @param   category     DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     *
+     * @throws  IllegalStateException  DOCUMENT ME!
+     */
+    public static DataItem getWmsDataItem(final String layername, final String displayname, final Categories category) {
+        final DataItem wmsItem = new DataItem();
+
+        wmsItem.setDatadescriptor(WMS_DESCRIPTOR);
+        wmsItem.setName(layername);
+        wmsItem.setDescription("dataitem for '" + layername + "'"); // NOI18N
+        wmsItem.setActualaccessinfocontenttype("application/json"); // NOI18N
+        wmsItem.setCategories(Arrays.asList(new Category[] { category.getCategory() }));
+        wmsItem.setLastmodified(new Date());
+
+        try {
+            wmsItem.setActualaccessinfo(MAPPER.writeValueAsString(
+                    new WmsLayer(
+                        layername,
+                        (displayname == null) ? layername : displayname,
+                        false,
+                        true)));
+        } catch (final JsonProcessingException ex) {
+            throw new IllegalStateException("I DON'T EVER OCCUR", ex); // NOI18N
+        }
+
+        return wmsItem;
+    }
 }
