@@ -206,4 +206,16 @@ public final class ICMMHelper {
 
         return ret;
     }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param  worldstate  DOCUMENT ME!
+     * @param  dataitems   DOCUMENT ME!
+     */
+    public static void attachWorldstate(final Worldstate worldstate, final List<DataItem> dataitems) {
+        for (final DataItem di : dataitems) {
+            di.setWorldstate(worldstate);
+        }
+    }
 }
