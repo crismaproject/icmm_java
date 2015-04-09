@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -45,6 +46,7 @@ public final class DataItem extends BaseEntity {
     private String actualaccessinfo;
     private SpatialCoverage spatialcoverage;
     private Worldstate worldstate;
+    private List<Category> categories;
 
     //~ Methods ----------------------------------------------------------------
 

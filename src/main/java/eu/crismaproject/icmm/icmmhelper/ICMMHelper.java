@@ -12,12 +12,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import eu.crismaproject.icmm.icmmhelper.entity.BaseEntity;
+import eu.crismaproject.icmm.icmmhelper.entity.Category;
+import eu.crismaproject.icmm.icmmhelper.entity.DataItem;
 import eu.crismaproject.icmm.icmmhelper.entity.EntityIdentifier;
 import eu.crismaproject.icmm.icmmhelper.entity.Transition;
 import eu.crismaproject.icmm.icmmhelper.entity.Transition.Status;
 import eu.crismaproject.icmm.icmmhelper.entity.TransitionStatus;
+import eu.crismaproject.icmm.icmmhelper.entity.Worldstate;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -139,5 +144,53 @@ public final class ICMMHelper {
         } catch (final IOException ex) {
             throw new IllegalStateException("cannot deserialise transitionstatus: " + t.getTransitionstatus(), ex);
         }
+    }
+    
+    public static <T extends BaseEntity> T cloneEntity(final Class<T> clazz, final T original) {
+        try {
+            return MAPPER.readValue(MAPPER.writeValueAsString(original), clazz);
+        } catch(final IOException ex) {
+            throw new IllegalStateException("cannot deserialise entity: " + original, ex);
+        }
+    }
+    
+    /**
+     * Returns first data item that has a category matching the given key.
+     * 
+     * @param worldstate
+     * @param categoryKey
+     * @return 
+     */
+    public static DataItem getDataItem(final Worldstate worldstate, final String categoryKey) {
+        for(final DataItem di : worldstate.getWorldstatedata()) {
+            for(final Category cat : di.getCategories()) {
+                if(cat.getKey().equals(categoryKey)) {
+                    return di;
+                }
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Returns all data items that have a category matching the given key.
+     * 
+     * @param worldstate
+     * @param categoryKey
+     * @return 
+     */
+    public static List<DataItem> getDataItems(final Worldstate worldstate, final String categoryKey) {
+        final List<DataItem> ret = new ArrayList<DataItem>();
+        for(final DataItem di : worldstate.getWorldstatedata()) {
+            for(final Category cat : di.getCategories()) {
+                if(cat.getKey().equals(categoryKey)) {
+                    ret.add(di);
+                    break;
+                }
+            }
+        }
+        
+        return ret;
     }
 }
