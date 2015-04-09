@@ -1,15 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************
+*
+* cismet GmbH, Saarbruecken, Germany
+*
+*              ... and it just works.
+*
+****************************************************/
 package eu.crismaproject.icmm.icmmhelper.pilotD;
 
 /**
+ * DOCUMENT ME!
  *
- * @author mscholl
+ * @author   mscholl
+ * @version  0.1
  */
 public enum Categories {
+
+    //J-
     INTENSITY_GRID,
     BUILDING_DAMAGE_MIN,
     BUILDING_DAMAGE_MAX,
@@ -24,4 +30,5 @@ public enum Categories {
     RETROFIT_ANALYSIS,
     EVACUATION_ANALYSIS,
     BACKGROUND_LAYER
+    //J+
 }

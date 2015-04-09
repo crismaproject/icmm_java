@@ -21,9 +21,9 @@ import eu.crismaproject.icmm.icmmhelper.entity.TransitionStatus;
 import eu.crismaproject.icmm.icmmhelper.entity.Worldstate;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,7 +33,7 @@ import javax.ws.rs.core.MediaType;
  * DOCUMENT ME!
  *
  * @author   martin.scholl@cismet.de
- * @version  0.1
+ * @version  0.2
  */
 public final class ICMMHelper {
 
@@ -145,52 +145,65 @@ public final class ICMMHelper {
             throw new IllegalStateException("cannot deserialise transitionstatus: " + t.getTransitionstatus(), ex);
         }
     }
-    
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   <T>       DOCUMENT ME!
+     * @param   clazz     DOCUMENT ME!
+     * @param   original  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     *
+     * @throws  IllegalStateException  DOCUMENT ME!
+     */
     public static <T extends BaseEntity> T cloneEntity(final Class<T> clazz, final T original) {
         try {
             return MAPPER.readValue(MAPPER.writeValueAsString(original), clazz);
-        } catch(final IOException ex) {
+        } catch (final IOException ex) {
             throw new IllegalStateException("cannot deserialise entity: " + original, ex);
         }
     }
-    
+
     /**
      * Returns first data item that has a category matching the given key.
-     * 
-     * @param worldstate
-     * @param categoryKey
-     * @return 
+     *
+     * @param   worldstate   DOCUMENT ME!
+     * @param   categoryKey  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
      */
     public static DataItem getDataItem(final Worldstate worldstate, final String categoryKey) {
-        for(final DataItem di : worldstate.getWorldstatedata()) {
-            for(final Category cat : di.getCategories()) {
-                if(cat.getKey().equals(categoryKey)) {
+        for (final DataItem di : worldstate.getWorldstatedata()) {
+            for (final Category cat : di.getCategories()) {
+                if (cat.getKey().equals(categoryKey)) {
                     return di;
                 }
             }
         }
-        
+
         return null;
     }
-    
+
     /**
      * Returns all data items that have a category matching the given key.
-     * 
-     * @param worldstate
-     * @param categoryKey
-     * @return 
+     *
+     * @param   worldstate   DOCUMENT ME!
+     * @param   categoryKey  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
      */
     public static List<DataItem> getDataItems(final Worldstate worldstate, final String categoryKey) {
         final List<DataItem> ret = new ArrayList<DataItem>();
-        for(final DataItem di : worldstate.getWorldstatedata()) {
-            for(final Category cat : di.getCategories()) {
-                if(cat.getKey().equals(categoryKey)) {
+        for (final DataItem di : worldstate.getWorldstatedata()) {
+            for (final Category cat : di.getCategories()) {
+                if (cat.getKey().equals(categoryKey)) {
                     ret.add(di);
                     break;
                 }
             }
         }
-        
+
         return ret;
     }
 }
