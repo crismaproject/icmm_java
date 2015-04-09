@@ -35,7 +35,8 @@ public enum Categories {
     RETROFIT_ANALYSIS("13"),
     EVACUATION_ANALYSIS("14"),
     BACKGROUND_LAYER("15"),
-    SHAKEMAP("16");
+    SHAKEMAP("16"),
+    INDICATORS("17");
     //J+
 
     private final String id;
