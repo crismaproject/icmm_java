@@ -15,12 +15,16 @@ import eu.crismaproject.icmm.icmmhelper.ICMMHelper;
 import eu.crismaproject.icmm.icmmhelper.entity.Category;
 import eu.crismaproject.icmm.icmmhelper.entity.DataDescriptor;
 import eu.crismaproject.icmm.icmmhelper.entity.DataItem;
+import eu.crismaproject.icmm.icmmhelper.entity.Transition;
 import eu.crismaproject.icmm.icmmhelper.entity.Worldstate;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 /**
  * DOCUMENT ME!
@@ -43,6 +47,8 @@ public class PilotDHelper {
     public static final String INDICATORS_DESCRIPTOR_REF;
     public static final DataDescriptor INDICATORS_DESCRIPTOR;
 
+    public static final List<DataItem> STATIC_ITEMS;
+
     static {
         WMS_DESCRIPTOR_REF = "/CRISMA.datadescriptors/1"; // NOI18N
         WMS_DESCRIPTOR = new DataDescriptor();
@@ -57,6 +63,53 @@ public class PilotDHelper {
         INDICATORS_DESCRIPTOR.set$ref(INDICATORS_DESCRIPTOR_REF);
 
         MAPPER = new ObjectMapper(new JsonFactory());
+
+        final List<DataItem> staticItems = new ArrayList<DataItem>();
+
+        DataItem item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/1");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/2");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/3");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/4");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/5");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/6");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/7");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/8");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/9");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/10");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/11");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/12");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/13");
+        staticItems.add(item);
+        item = new DataItem();
+        item.set$ref("/CRISMA.dataitems/14");
+        staticItems.add(item);
+
+        STATIC_ITEMS = Collections.unmodifiableList(staticItems);
     }
 
     //~ Constructors -----------------------------------------------------------
@@ -372,5 +425,40 @@ public class PilotDHelper {
         }
 
         return indicatorItem;
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   originWs         DOCUMENT ME!
+     * @param   resultDataItems  DOCUMENT ME!
+     * @param   indicatorItem    DOCUMENT ME!
+     * @param   transition       DOCUMENT ME!
+     * @param   name             DOCUMENT ME!
+     * @param   description      DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    public static Worldstate getWorldstate(final Worldstate originWs,
+            final List<DataItem> resultDataItems,
+            final DataItem indicatorItem,
+            final Transition transition,
+            final String name,
+            final String description) {
+        final Worldstate newWs = new Worldstate();
+        newWs.setCategories(originWs.getCategories());
+        newWs.setCreated(new Date());
+        newWs.setDescription(description);
+        newWs.setIccdata(indicatorItem);
+        newWs.setName(name);
+        newWs.setOrigintransition(transition);
+        newWs.setParentworldstate(originWs);
+
+        final List<DataItem> items = new ArrayList<DataItem>();
+        items.addAll(STATIC_ITEMS);
+        items.addAll(resultDataItems);
+        newWs.setWorldstatedata(items);
+
+        return newWs;
     }
 }
