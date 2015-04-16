@@ -8,6 +8,7 @@
 package eu.crismaproject.icmm.icmmhelper.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NoArgsConstructor
 @ToString(of = { "$self", "$ref", "id" })
 @EqualsAndHashCode(of = { "$self", "$ref", "id" })
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class BaseEntity {
 
     //~ Instance fields --------------------------------------------------------
