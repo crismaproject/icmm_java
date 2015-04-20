@@ -26,11 +26,13 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import de.cismet.tools.Equals;
+
 /**
  * DOCUMENT ME!
  *
  * @author   mscholl
- * @version  0.1
+ * @version  0.2
  */
 public class PilotDHelper {
 
@@ -244,45 +246,109 @@ public class PilotDHelper {
      * @return  DOCUMENT ME!
      */
     public static Indicators getEmtpyIndicators() {
-        final Value noOfDead = new Value();
-        noOfDead.setDisplayName("Number of dead");      // NOI18N
-        noOfDead.setIconResource("flower_dead_16.png"); // NOI18N
-        noOfDead.setUnit("People");                     // NOI18N
+        final Value noOfDeadMin = new Value();
+        noOfDeadMin.setDisplayName("Number of dead (Min)"); // NOI18N
+        noOfDeadMin.setIconResource("flower_dead_16.png");  // NOI18N
+        noOfDeadMin.setUnit("People");                      // NOI18N
+        final Value noOfDeadAvg = new Value();
+        noOfDeadAvg.setDisplayName("Number of dead (Avg)"); // NOI18N
+        noOfDeadAvg.setIconResource("flower_dead_16.png");  // NOI18N
+        noOfDeadAvg.setUnit("People");                      // NOI18N
+        final Value noOfDeadMax = new Value();
+        noOfDeadMax.setDisplayName("Number of dead (Max)"); // NOI18N
+        noOfDeadMax.setIconResource("flower_dead_16.png");  // NOI18N
+        noOfDeadMax.setUnit("People");                      // NOI18N
 
-        final Value noOfInjured = new Value();
-        noOfInjured.setDisplayName("Number of injured");      // NOI18N
-        noOfInjured.setIconResource("flower_injured_16.png"); // NOI18N
-        noOfInjured.setUnit("People");                        // NOI18N
+        final Value noOfInjuredMin = new Value();
+        noOfInjuredMin.setDisplayName("Number of injured (Min)"); // NOI18N
+        noOfInjuredMin.setIconResource("flower_injured_16.png");  // NOI18N
+        noOfInjuredMin.setUnit("People");                         // NOI18N
+        final Value noOfInjuredAvg = new Value();
+        noOfInjuredAvg.setDisplayName("Number of injured (Avg)"); // NOI18N
+        noOfInjuredAvg.setIconResource("flower_injured_16.png");  // NOI18N
+        noOfInjuredAvg.setUnit("People");                         // NOI18N
+        final Value noOfInjuredMax = new Value();
+        noOfInjuredMax.setDisplayName("Number of injured (Max)"); // NOI18N
+        noOfInjuredMax.setIconResource("flower_injured_16.png");  // NOI18N
+        noOfInjuredMax.setUnit("People");                         // NOI18N
 
-        final Value noOfHomeless = new Value();
-        noOfHomeless.setDisplayName("Number of homeless");      // NOI18N
-        noOfHomeless.setIconResource("flower_homeless_16.png"); // NOI18N
-        noOfHomeless.setUnit("People");                         // NOI18N
+        final Value noOfHomelessMin = new Value();
+        noOfHomelessMin.setDisplayName("Number of homeless (Min)"); // NOI18N
+        noOfHomelessMin.setIconResource("flower_homeless_16.png");  // NOI18N
+        noOfHomelessMin.setUnit("People");                          // NOI18N
+        final Value noOfHomelessAvg = new Value();
+        noOfHomelessAvg.setDisplayName("Number of homeless (Avg)"); // NOI18N
+        noOfHomelessAvg.setIconResource("flower_homeless_16.png");  // NOI18N
+        noOfHomelessAvg.setUnit("People");                          // NOI18N
+        final Value noOfHomelessMax = new Value();
+        noOfHomelessMax.setDisplayName("Number of homeless (Max)"); // NOI18N
+        noOfHomelessMax.setIconResource("flower_homeless_16.png");  // NOI18N
+        noOfHomelessMax.setUnit("People");                          // NOI18N
 
-        final Value directDamageCost = new Value();
-        directDamageCost.setDisplayName("Direct damage cost");    // NOI18N
-        directDamageCost.setIconResource("dollar_direct_16.png"); // NOI18N
-        directDamageCost.setUnit("Euro");                         // NOI18N
+        final Value directDamageCostMin = new Value();
+        directDamageCostMin.setDisplayName("Direct damage cost (Min)"); // NOI18N
+        directDamageCostMin.setIconResource("dollar_direct_16.png");    // NOI18N
+        directDamageCostMin.setUnit("Euro");                            // NOI18N
+        final Value directDamageCostAvg = new Value();
+        directDamageCostAvg.setDisplayName("Direct damage cost (Avg)"); // NOI18N
+        directDamageCostAvg.setIconResource("dollar_direct_16.png");    // NOI18N
+        directDamageCostAvg.setUnit("Euro");                            // NOI18N
+        final Value directDamageCostMax = new Value();
+        directDamageCostMax.setDisplayName("Direct damage cost (Max)"); // NOI18N
+        directDamageCostMax.setIconResource("dollar_direct_16.png");    // NOI18N
+        directDamageCostMax.setUnit("Euro");                            // NOI18N
 
-        final Value indirectDamageCost = new Value();
-        indirectDamageCost.setDisplayName("Inirect damage cost");     // NOI18N
-        indirectDamageCost.setIconResource("dollar_indirect_16.png"); // NOI18N
-        indirectDamageCost.setUnit("Euro");                           // NOI18N
+        final Value indirectDamageCostMin = new Value();
+        indirectDamageCostMin.setDisplayName("Inirect damage cost (Min)"); // NOI18N
+        indirectDamageCostMin.setIconResource("dollar_indirect_16.png");   // NOI18N
+        indirectDamageCostMin.setUnit("Euro");                             // NOI18N
+        final Value indirectDamageCostAvg = new Value();
+        indirectDamageCostAvg.setDisplayName("Inirect damage cost (Avg)"); // NOI18N
+        indirectDamageCostAvg.setIconResource("dollar_indirect_16.png");   // NOI18N
+        indirectDamageCostAvg.setUnit("Euro");                             // NOI18N
+        final Value indirectDamageCostMax = new Value();
+        indirectDamageCostMax.setDisplayName("Inirect damage cost (Max)"); // NOI18N
+        indirectDamageCostMax.setIconResource("dollar_indirect_16.png");   // NOI18N
+        indirectDamageCostMax.setUnit("Euro");                             // NOI18N
 
-        final Value directRestorationCost = new Value();
-        directRestorationCost.setDisplayName("Direct restoration cost");    // NOI18N
-        directRestorationCost.setIconResource("dollar_restoration_16.png"); // NOI18N
-        directRestorationCost.setUnit("Euro");                              // NOI18N
+        final Value directRestorationCostMin = new Value();
+        directRestorationCostMin.setDisplayName("Direct restoration cost (Min)"); // NOI18N
+        directRestorationCostMin.setIconResource("dollar_restoration_16.png");    // NOI18N
+        directRestorationCostMin.setUnit("Euro");                                 // NOI18N
+        final Value directRestorationCostAvg = new Value();
+        directRestorationCostAvg.setDisplayName("Direct restoration cost (Avg)"); // NOI18N
+        directRestorationCostAvg.setIconResource("dollar_restoration_16.png");    // NOI18N
+        directRestorationCostAvg.setUnit("Euro");                                 // NOI18N
+        final Value directRestorationCostMax = new Value();
+        directRestorationCostMax.setDisplayName("Direct restoration cost (Max)"); // NOI18N
+        directRestorationCostMax.setIconResource("dollar_restoration_16.png");    // NOI18N
+        directRestorationCostMax.setUnit("Euro");                                 // NOI18N
 
-        final Value lostBuildings = new Value();
-        lostBuildings.setDisplayName("Lost buildings");    // NOI18N
-        lostBuildings.setIconResource("home_lost_16.png"); // NOI18N
-        lostBuildings.setUnit("Buildings");                // NOI18N
+        final Value lostBuildingsMin = new Value();
+        lostBuildingsMin.setDisplayName("Lost buildings (Min)"); // NOI18N
+        lostBuildingsMin.setIconResource("home_lost_16.png");    // NOI18N
+        lostBuildingsMin.setUnit("Buildings");                   // NOI18N
+        final Value lostBuildingsAvg = new Value();
+        lostBuildingsAvg.setDisplayName("Lost buildings (Avg)"); // NOI18N
+        lostBuildingsAvg.setIconResource("home_lost_16.png");    // NOI18N
+        lostBuildingsAvg.setUnit("Buildings");                   // NOI18N
+        final Value lostBuildingsMax = new Value();
+        lostBuildingsMax.setDisplayName("Lost buildings (Max)"); // NOI18N
+        lostBuildingsMax.setIconResource("home_lost_16.png");    // NOI18N
+        lostBuildingsMax.setUnit("Buildings");                   // NOI18N
 
-        final Value unsafeBuildings = new Value();
-        unsafeBuildings.setDisplayName("Unsafe buildings");    // NOI18N
-        unsafeBuildings.setIconResource("home_unsafe_16.png"); // NOI18N
-        unsafeBuildings.setUnit("Buildings");                  // NOI18N
+        final Value unsafeBuildingsMin = new Value();
+        unsafeBuildingsMin.setDisplayName("Unsafe buildings (Min)"); // NOI18N
+        unsafeBuildingsMin.setIconResource("home_unsafe_16.png");    // NOI18N
+        unsafeBuildingsMin.setUnit("Buildings");                     // NOI18N
+        final Value unsafeBuildingsAvg = new Value();
+        unsafeBuildingsAvg.setDisplayName("Unsafe buildings (Avg)"); // NOI18N
+        unsafeBuildingsAvg.setIconResource("home_unsafe_16.png");    // NOI18N
+        unsafeBuildingsAvg.setUnit("Buildings");                     // NOI18N
+        final Value unsafeBuildingsMax = new Value();
+        unsafeBuildingsMax.setDisplayName("Unsafe buildings (Max)"); // NOI18N
+        unsafeBuildingsMax.setIconResource("home_unsafe_16.png");    // NOI18N
+        unsafeBuildingsMax.setUnit("Buildings");                     // NOI18N
 
         final Value totalRetrofittingCost = new Value();
         totalRetrofittingCost.setDisplayName("Total retrofitting cost");  // NOI18N
@@ -307,22 +373,38 @@ public class PilotDHelper {
         final Casualties casualties = new Casualties();
         casualties.setDisplayName("Casualties");     // NOI18N
         casualties.setIconResource("flower_16.png"); // NOI18N
-        casualties.setNoOfDead(noOfDead);
-        casualties.setNoOfInjured(noOfInjured);
-        casualties.setNoOfHomeless(indirectDamageCost);
+        casualties.setNoOfDeadMin(noOfDeadMin);
+        casualties.setNoOfInjuredMin(noOfInjuredMin);
+        casualties.setNoOfHomelessMin(indirectDamageCostMin);
+        casualties.setNoOfDeadAvg(noOfDeadAvg);
+        casualties.setNoOfInjuredAvg(noOfInjuredAvg);
+        casualties.setNoOfHomelessAvg(indirectDamageCostAvg);
+        casualties.setNoOfDeadMax(noOfDeadMax);
+        casualties.setNoOfInjuredMax(noOfInjuredMax);
+        casualties.setNoOfHomelessMax(noOfHomelessMax);
 
         final Cost cost = new Cost();
         cost.setDisplayName("Economic cost");  // NOI18N
         cost.setIconResource("dollar_16.png"); // NOI18N
-        cost.setDirectDamageCost(directDamageCost);
-        cost.setIndirectDamageCost(indirectDamageCost);
-        cost.setDirectRestorationCost(directRestorationCost);
+        cost.setDirectDamageCostMin(directDamageCostMin);
+        cost.setIndirectDamageCostMin(indirectDamageCostMin);
+        cost.setDirectRestorationCostMin(directRestorationCostMin);
+        cost.setDirectDamageCostAvg(directDamageCostAvg);
+        cost.setIndirectDamageCostAvg(indirectDamageCostAvg);
+        cost.setDirectRestorationCostAvg(directRestorationCostAvg);
+        cost.setDirectDamageCostMax(directDamageCostMax);
+        cost.setIndirectDamageCostMax(indirectDamageCostMax);
+        cost.setDirectRestorationCostMax(directRestorationCostMax);
 
         final DamagedBuildings damagedBuildings = new DamagedBuildings();
         damagedBuildings.setDisplayName("Damaged buildings"); // NOI18N
         damagedBuildings.setIconResource("home_16.png");      // NOI18N
-        damagedBuildings.setLostBuildings(lostBuildings);
-        damagedBuildings.setUnsafeBuildings(unsafeBuildings);
+        damagedBuildings.setLostBuildingsMin(lostBuildingsMin);
+        damagedBuildings.setUnsafeBuildingsMin(unsafeBuildingsMin);
+        damagedBuildings.setLostBuildingsAvg(lostBuildingsAvg);
+        damagedBuildings.setUnsafeBuildingsAvg(unsafeBuildingsAvg);
+        damagedBuildings.setLostBuildingsMax(lostBuildingsMax);
+        damagedBuildings.setUnsafeBuildingsMax(unsafeBuildingsMax);
 
         final BuildingRetrofitting buildingRetrofitting = new BuildingRetrofitting();
         buildingRetrofitting.setDisplayName("Building retrofitting"); // NOI18N
@@ -349,46 +431,129 @@ public class PilotDHelper {
     /**
      * DOCUMENT ME!
      *
-     * @param   noOfDead                  DOCUMENT ME!
-     * @param   noOfInjured               DOCUMENT ME!
-     * @param   noOfHomeless              DOCUMENT ME!
-     * @param   directDamageCost          DOCUMENT ME!
-     * @param   indirectDamageCost        DOCUMENT ME!
-     * @param   directRestorationCost     DOCUMENT ME!
-     * @param   lostBuildings             DOCUMENT ME!
-     * @param   unsafeBuildings           DOCUMENT ME!
+     * @param   noOfDeadMin               DOCUMENT ME!
+     * @param   noOfInjuredMin            DOCUMENT ME!
+     * @param   noOfHomelessMin           DOCUMENT ME!
+     * @param   noOfDeadAvg               DOCUMENT ME!
+     * @param   noOfInjuredAvg            DOCUMENT ME!
+     * @param   noOfHomelessAvg           DOCUMENT ME!
+     * @param   noOfDeadMax               DOCUMENT ME!
+     * @param   noOfInjuredMax            DOCUMENT ME!
+     * @param   noOfHomelessMax           DOCUMENT ME!
+     * @param   directDamageCostMin       DOCUMENT ME!
+     * @param   indirectDamageCostMin     DOCUMENT ME!
+     * @param   directRestorationCostMin  DOCUMENT ME!
+     * @param   directDamageCostAvg       DOCUMENT ME!
+     * @param   indirectDamageCostAvg     DOCUMENT ME!
+     * @param   directRestorationCostAvg  DOCUMENT ME!
+     * @param   directDamageCostMax       DOCUMENT ME!
+     * @param   indirectDamageCostMax     DOCUMENT ME!
+     * @param   directRestorationCostMax  DOCUMENT ME!
+     * @param   lostBuildingsMin          DOCUMENT ME!
+     * @param   unsafeBuildingsMin        DOCUMENT ME!
+     * @param   lostBuildingsAvg          DOCUMENT ME!
+     * @param   unsafeBuildingsAvg        DOCUMENT ME!
+     * @param   lostBuildingsMax          DOCUMENT ME!
+     * @param   unsafeBuildingsMax        DOCUMENT ME!
      * @param   preemtiveEvacuationCost   DOCUMENT ME!
      * @param   noOfEvacuated             DOCUMENT ME!
      * @param   totalRetrofittingCost     DOCUMENT ME!
      * @param   noOfRetrofittedBuildings  DOCUMENT ME!
      *
      * @return  DOCUMENT ME!
+     *
+     * @throws  IllegalArgumentException  DOCUMENT ME!
      */
     public static Indicators getIndicators(
-            final Number noOfDead,
-            final Number noOfInjured,
-            final Number noOfHomeless,
-            final Number directDamageCost,
-            final Number indirectDamageCost,
-            final Number directRestorationCost,
-            final Number lostBuildings,
-            final Number unsafeBuildings,
+            final Number noOfDeadMin,
+            final Number noOfInjuredMin,
+            final Number noOfHomelessMin,
+            final Number noOfDeadAvg,
+            final Number noOfInjuredAvg,
+            final Number noOfHomelessAvg,
+            final Number noOfDeadMax,
+            final Number noOfInjuredMax,
+            final Number noOfHomelessMax,
+            final Number directDamageCostMin,
+            final Number indirectDamageCostMin,
+            final Number directRestorationCostMin,
+            final Number directDamageCostAvg,
+            final Number indirectDamageCostAvg,
+            final Number directRestorationCostAvg,
+            final Number directDamageCostMax,
+            final Number indirectDamageCostMax,
+            final Number directRestorationCostMax,
+            final Number lostBuildingsMin,
+            final Number unsafeBuildingsMin,
+            final Number lostBuildingsAvg,
+            final Number unsafeBuildingsAvg,
+            final Number lostBuildingsMax,
+            final Number unsafeBuildingsMax,
             final Number preemtiveEvacuationCost,
             final Number noOfEvacuated,
             final Number totalRetrofittingCost,
             final Number noOfRetrofittedBuildings) {
+        if (!Equals.nonNull((Object[])new Number[] {
+                            noOfDeadMin,
+                            noOfInjuredMin,
+                            noOfHomelessMin,
+                            noOfDeadAvg,
+                            noOfInjuredAvg,
+                            noOfHomelessAvg,
+                            noOfDeadMax,
+                            noOfInjuredMax,
+                            noOfHomelessMax,
+                            directDamageCostMin,
+                            indirectDamageCostMin,
+                            directRestorationCostMin,
+                            directDamageCostAvg,
+                            indirectDamageCostAvg,
+                            directRestorationCostAvg,
+                            directDamageCostMax,
+                            indirectDamageCostMax,
+                            directRestorationCostMax,
+                            lostBuildingsMin,
+                            unsafeBuildingsMin,
+                            lostBuildingsAvg,
+                            unsafeBuildingsAvg,
+                            lostBuildingsMax,
+                            unsafeBuildingsMax,
+                            preemtiveEvacuationCost,
+                            noOfEvacuated,
+                            totalRetrofittingCost,
+                            noOfRetrofittedBuildings
+                        })) {
+            throw new IllegalArgumentException("null is not a valid number");
+        }
+
         final Indicators indicators = getEmtpyIndicators();
 
-        indicators.getCasualties().getNoOfDead().setValue(noOfDead);
-        indicators.getCasualties().getNoOfInjured().setValue(noOfInjured);
-        indicators.getCasualties().getNoOfHomeless().setValue(noOfHomeless);
+        indicators.getCasualties().getNoOfDeadMin().setValue(noOfDeadMin);
+        indicators.getCasualties().getNoOfInjuredMin().setValue(noOfInjuredMin);
+        indicators.getCasualties().getNoOfHomelessMin().setValue(noOfHomelessMin);
+        indicators.getCasualties().getNoOfDeadAvg().setValue(noOfDeadAvg);
+        indicators.getCasualties().getNoOfInjuredAvg().setValue(noOfInjuredAvg);
+        indicators.getCasualties().getNoOfHomelessAvg().setValue(noOfHomelessAvg);
+        indicators.getCasualties().getNoOfDeadMax().setValue(noOfDeadMax);
+        indicators.getCasualties().getNoOfInjuredMax().setValue(noOfInjuredMax);
+        indicators.getCasualties().getNoOfHomelessMax().setValue(noOfHomelessMax);
 
-        indicators.getCost().getDirectDamageCost().setValue(directDamageCost);
-        indicators.getCost().getIndirectDamageCost().setValue(indirectDamageCost);
-        indicators.getCost().getDirectRestorationCost().setValue(directRestorationCost);
+        indicators.getCost().getDirectDamageCostMin().setValue(directDamageCostMin);
+        indicators.getCost().getIndirectDamageCostMin().setValue(indirectDamageCostMin);
+        indicators.getCost().getDirectRestorationCostMin().setValue(directRestorationCostMin);
+        indicators.getCost().getDirectDamageCostAvg().setValue(directDamageCostAvg);
+        indicators.getCost().getIndirectDamageCostAvg().setValue(indirectDamageCostAvg);
+        indicators.getCost().getDirectRestorationCostAvg().setValue(directRestorationCostAvg);
+        indicators.getCost().getDirectDamageCostMax().setValue(directDamageCostMax);
+        indicators.getCost().getIndirectDamageCostMax().setValue(indirectDamageCostMax);
+        indicators.getCost().getDirectRestorationCostMax().setValue(directRestorationCostMax);
 
-        indicators.getDamagedBuildings().getLostBuildings().setValue(lostBuildings);
-        indicators.getDamagedBuildings().getUnsafeBuildings().setValue(unsafeBuildings);
+        indicators.getDamagedBuildings().getLostBuildingsMin().setValue(lostBuildingsMin);
+        indicators.getDamagedBuildings().getUnsafeBuildingsMin().setValue(unsafeBuildingsMin);
+        indicators.getDamagedBuildings().getLostBuildingsAvg().setValue(lostBuildingsAvg);
+        indicators.getDamagedBuildings().getUnsafeBuildingsAvg().setValue(unsafeBuildingsAvg);
+        indicators.getDamagedBuildings().getLostBuildingsMax().setValue(lostBuildingsMax);
+        indicators.getDamagedBuildings().getUnsafeBuildingsMax().setValue(unsafeBuildingsMax);
 
         indicators.getBuildingRetrofitting().getTotalRetrofittingCost().setValue(totalRetrofittingCost);
         indicators.getBuildingRetrofitting().getNoOfRetrofittedBuildings().setValue(noOfRetrofittedBuildings);

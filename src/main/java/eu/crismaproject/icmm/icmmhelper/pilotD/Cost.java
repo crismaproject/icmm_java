@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * DOCUMENT ME!
  *
  * @author   martin.scholl@cismet.de
- * @version  0.1
+ * @version  0.2
  */
 @XmlRootElement
 @Data
@@ -29,7 +29,13 @@ public final class Cost extends Common {
 
     //~ Instance fields --------------------------------------------------------
 
-    private Value directDamageCost;
-    private Value indirectDamageCost;
-    private Value directRestorationCost;
+    private Value directDamageCostMin;
+    private Value indirectDamageCostMin;
+    private Value directRestorationCostMin;
+    private Value directDamageCostAvg;
+    private Value indirectDamageCostAvg;
+    private Value directRestorationCostAvg;
+    private Value directDamageCostMax;
+    private Value indirectDamageCostMax;
+    private Value directRestorationCostMax;
 }

@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * DOCUMENT ME!
  *
  * @author   martin.scholl@cismet.de
- * @version  0.1
+ * @version  0.2
  */
 @XmlRootElement
 @Data
@@ -29,7 +29,13 @@ public final class Casualties extends Common {
 
     //~ Instance fields --------------------------------------------------------
 
-    private Value noOfDead;
-    private Value noOfInjured;
-    private Value noOfHomeless;
+    private Value noOfDeadMin;
+    private Value noOfInjuredMin;
+    private Value noOfHomelessMin;
+    private Value noOfDeadAvg;
+    private Value noOfInjuredAvg;
+    private Value noOfHomelessAvg;
+    private Value noOfDeadMax;
+    private Value noOfInjuredMax;
+    private Value noOfHomelessMax;
 }
