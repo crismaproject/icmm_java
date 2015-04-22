@@ -300,16 +300,16 @@ public class PilotDHelper {
 
         final Value indirectDamageCostMin = new Value();
         indirectDamageCostMin.setDisplayName("Indirect damage cost (Min)"); // NOI18N
-        indirectDamageCostMin.setIconResource("dollar_indirect_16.png");   // NOI18N
-        indirectDamageCostMin.setUnit("Euro");                             // NOI18N
+        indirectDamageCostMin.setIconResource("dollar_indirect_16.png");    // NOI18N
+        indirectDamageCostMin.setUnit("Euro");                              // NOI18N
         final Value indirectDamageCostAvg = new Value();
         indirectDamageCostAvg.setDisplayName("Indirect damage cost (Avg)"); // NOI18N
-        indirectDamageCostAvg.setIconResource("dollar_indirect_16.png");   // NOI18N
-        indirectDamageCostAvg.setUnit("Euro");                             // NOI18N
+        indirectDamageCostAvg.setIconResource("dollar_indirect_16.png");    // NOI18N
+        indirectDamageCostAvg.setUnit("Euro");                              // NOI18N
         final Value indirectDamageCostMax = new Value();
-        indirectDamageCostMax.setDisplayName("Inidrect damage cost (Max)"); // NOI18N
-        indirectDamageCostMax.setIconResource("dollar_indirect_16.png");   // NOI18N
-        indirectDamageCostMax.setUnit("Euro");                             // NOI18N
+        indirectDamageCostMax.setDisplayName("Indirect damage cost (Max)"); // NOI18N
+        indirectDamageCostMax.setIconResource("dollar_indirect_16.png");    // NOI18N
+        indirectDamageCostMax.setUnit("Euro");                              // NOI18N
 
         final Value directRestorationCostMin = new Value();
         directRestorationCostMin.setDisplayName("Direct restoration cost (Min)"); // NOI18N
@@ -427,7 +427,7 @@ public class PilotDHelper {
 
         return indicators;
     }
-    
+
     /**
      * DOCUMENT ME!
      *
