@@ -26,8 +26,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import de.cismet.tools.Equals;
-
 /**
  * DOCUMENT ME!
  *
@@ -493,7 +491,7 @@ public class PilotDHelper {
             final Number noOfEvacuated,
             final Number totalRetrofittingCost,
             final Number noOfRetrofittedBuildings) {
-        if (!Equals.nonNull((Object[])new Number[] {
+        if (!nonNull((Object[])new Number[] {
                             noOfDeadMin,
                             noOfInjuredMin,
                             noOfHomelessMin,
@@ -625,5 +623,26 @@ public class PilotDHelper {
         newWs.setWorldstatedata(items);
 
         return newWs;
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @param   obs  DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    public static boolean nonNull(final Object... obs) {
+        if (obs == null) {
+            return false;
+        }
+
+        for (final Object o : obs) {
+            if (o == null) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

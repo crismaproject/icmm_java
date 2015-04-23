@@ -47,6 +47,17 @@ public class Worldstate extends BaseEntity {
     private List<Worldstate> childworldstates;
     private List<DataItem> worldstatedata;
 
+    //~ Constructors -----------------------------------------------------------
+
+    /**
+     * Creates a new Worldstate object.
+     *
+     * @param  $ref  DOCUMENT ME!
+     */
+    public Worldstate(final String $ref) {
+        super(null, $ref, null);
+    }
+
     //~ Methods ----------------------------------------------------------------
 
     @Override
