@@ -245,132 +245,132 @@ public class PilotDHelper {
      */
     public static Indicators getEmtpyIndicators() {
         final Value noOfDeadMin = new Value();
-        noOfDeadMin.setDisplayName("Number of dead (Min)"); // NOI18N
-        noOfDeadMin.setIconResource("flower_dead_16.png");  // NOI18N
-        noOfDeadMin.setUnit("People");                      // NOI18N
+        noOfDeadMin.setDisplayName("Number of dead (Min)");              // NOI18N
+        noOfDeadMin.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfDeadMin.setUnit("People");                                   // NOI18N
         final Value noOfDeadAvg = new Value();
-        noOfDeadAvg.setDisplayName("Number of dead (Avg)"); // NOI18N
-        noOfDeadAvg.setIconResource("flower_dead_16.png");  // NOI18N
-        noOfDeadAvg.setUnit("People");                      // NOI18N
+        noOfDeadAvg.setDisplayName("Number of dead (Avg)");              // NOI18N
+        noOfDeadAvg.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfDeadAvg.setUnit("People");                                   // NOI18N
         final Value noOfDeadMax = new Value();
-        noOfDeadMax.setDisplayName("Number of dead (Max)"); // NOI18N
-        noOfDeadMax.setIconResource("flower_dead_16.png");  // NOI18N
-        noOfDeadMax.setUnit("People");                      // NOI18N
+        noOfDeadMax.setDisplayName("Number of dead (Max)");              // NOI18N
+        noOfDeadMax.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfDeadMax.setUnit("People");                                   // NOI18N
 
         final Value noOfInjuredMin = new Value();
-        noOfInjuredMin.setDisplayName("Number of injured (Min)"); // NOI18N
-        noOfInjuredMin.setIconResource("flower_injured_16.png");  // NOI18N
-        noOfInjuredMin.setUnit("People");                         // NOI18N
+        noOfInjuredMin.setDisplayName("Number of injured (Min)");           // NOI18N
+        noOfInjuredMin.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfInjuredMin.setUnit("People");                                   // NOI18N
         final Value noOfInjuredAvg = new Value();
-        noOfInjuredAvg.setDisplayName("Number of injured (Avg)"); // NOI18N
-        noOfInjuredAvg.setIconResource("flower_injured_16.png");  // NOI18N
-        noOfInjuredAvg.setUnit("People");                         // NOI18N
+        noOfInjuredAvg.setDisplayName("Number of injured (Avg)");           // NOI18N
+        noOfInjuredAvg.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfInjuredAvg.setUnit("People");                                   // NOI18N
         final Value noOfInjuredMax = new Value();
-        noOfInjuredMax.setDisplayName("Number of injured (Max)"); // NOI18N
-        noOfInjuredMax.setIconResource("flower_injured_16.png");  // NOI18N
-        noOfInjuredMax.setUnit("People");                         // NOI18N
+        noOfInjuredMax.setDisplayName("Number of injured (Max)");           // NOI18N
+        noOfInjuredMax.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfInjuredMax.setUnit("People");                                   // NOI18N
 
         final Value noOfHomelessMin = new Value();
-        noOfHomelessMin.setDisplayName("Number of homeless (Min)"); // NOI18N
-        noOfHomelessMin.setIconResource("flower_homeless_16.png");  // NOI18N
-        noOfHomelessMin.setUnit("People");                          // NOI18N
+        noOfHomelessMin.setDisplayName("Number of homeless (Min)");          // NOI18N
+        noOfHomelessMin.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfHomelessMin.setUnit("People");                                   // NOI18N
         final Value noOfHomelessAvg = new Value();
-        noOfHomelessAvg.setDisplayName("Number of homeless (Avg)"); // NOI18N
-        noOfHomelessAvg.setIconResource("flower_homeless_16.png");  // NOI18N
-        noOfHomelessAvg.setUnit("People");                          // NOI18N
+        noOfHomelessAvg.setDisplayName("Number of homeless (Avg)");          // NOI18N
+        noOfHomelessAvg.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfHomelessAvg.setUnit("People");                                   // NOI18N
         final Value noOfHomelessMax = new Value();
-        noOfHomelessMax.setDisplayName("Number of homeless (Max)"); // NOI18N
-        noOfHomelessMax.setIconResource("flower_homeless_16.png");  // NOI18N
-        noOfHomelessMax.setUnit("People");                          // NOI18N
+        noOfHomelessMax.setDisplayName("Number of homeless (Max)");          // NOI18N
+        noOfHomelessMax.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfHomelessMax.setUnit("People");                                   // NOI18N
 
         final Value directDamageCostMin = new Value();
-        directDamageCostMin.setDisplayName("Direct damage cost (Min)"); // NOI18N
-        directDamageCostMin.setIconResource("dollar_direct_16.png");    // NOI18N
-        directDamageCostMin.setUnit("Euro");                            // NOI18N
+        directDamageCostMin.setDisplayName("Direct damage cost (Min)");        // NOI18N
+        directDamageCostMin.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        directDamageCostMin.setUnit("Euro");                                   // NOI18N
         final Value directDamageCostAvg = new Value();
-        directDamageCostAvg.setDisplayName("Direct damage cost (Avg)"); // NOI18N
-        directDamageCostAvg.setIconResource("dollar_direct_16.png");    // NOI18N
-        directDamageCostAvg.setUnit("Euro");                            // NOI18N
+        directDamageCostAvg.setDisplayName("Direct damage cost (Avg)");        // NOI18N
+        directDamageCostAvg.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        directDamageCostAvg.setUnit("Euro");                                   // NOI18N
         final Value directDamageCostMax = new Value();
-        directDamageCostMax.setDisplayName("Direct damage cost (Max)"); // NOI18N
-        directDamageCostMax.setIconResource("dollar_direct_16.png");    // NOI18N
-        directDamageCostMax.setUnit("Euro");                            // NOI18N
+        directDamageCostMax.setDisplayName("Direct damage cost (Max)");        // NOI18N
+        directDamageCostMax.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        directDamageCostMax.setUnit("Euro");                                   // NOI18N
 
         final Value indirectDamageCostMin = new Value();
-        indirectDamageCostMin.setDisplayName("Indirect damage cost (Min)"); // NOI18N
-        indirectDamageCostMin.setIconResource("dollar_indirect_16.png");    // NOI18N
-        indirectDamageCostMin.setUnit("Euro");                              // NOI18N
+        indirectDamageCostMin.setDisplayName("Indirect damage cost (Min)");      // NOI18N
+        indirectDamageCostMin.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        indirectDamageCostMin.setUnit("Euro");                                   // NOI18N
         final Value indirectDamageCostAvg = new Value();
-        indirectDamageCostAvg.setDisplayName("Indirect damage cost (Avg)"); // NOI18N
-        indirectDamageCostAvg.setIconResource("dollar_indirect_16.png");    // NOI18N
-        indirectDamageCostAvg.setUnit("Euro");                              // NOI18N
+        indirectDamageCostAvg.setDisplayName("Indirect damage cost (Avg)");      // NOI18N
+        indirectDamageCostAvg.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        indirectDamageCostAvg.setUnit("Euro");                                   // NOI18N
         final Value indirectDamageCostMax = new Value();
-        indirectDamageCostMax.setDisplayName("Indirect damage cost (Max)"); // NOI18N
-        indirectDamageCostMax.setIconResource("dollar_indirect_16.png");    // NOI18N
-        indirectDamageCostMax.setUnit("Euro");                              // NOI18N
+        indirectDamageCostMax.setDisplayName("Indirect damage cost (Max)");      // NOI18N
+        indirectDamageCostMax.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        indirectDamageCostMax.setUnit("Euro");                                   // NOI18N
 
         final Value directRestorationCostMin = new Value();
-        directRestorationCostMin.setDisplayName("Direct restoration cost (Min)"); // NOI18N
-        directRestorationCostMin.setIconResource("dollar_restoration_16.png");    // NOI18N
-        directRestorationCostMin.setUnit("Euro");                                 // NOI18N
+        directRestorationCostMin.setDisplayName("Direct restoration cost (Min)");   // NOI18N
+        directRestorationCostMin.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        directRestorationCostMin.setUnit("Euro");                                   // NOI18N
         final Value directRestorationCostAvg = new Value();
-        directRestorationCostAvg.setDisplayName("Direct restoration cost (Avg)"); // NOI18N
-        directRestorationCostAvg.setIconResource("dollar_restoration_16.png");    // NOI18N
-        directRestorationCostAvg.setUnit("Euro");                                 // NOI18N
+        directRestorationCostAvg.setDisplayName("Direct restoration cost (Avg)");   // NOI18N
+        directRestorationCostAvg.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        directRestorationCostAvg.setUnit("Euro");                                   // NOI18N
         final Value directRestorationCostMax = new Value();
-        directRestorationCostMax.setDisplayName("Direct restoration cost (Max)"); // NOI18N
-        directRestorationCostMax.setIconResource("dollar_restoration_16.png");    // NOI18N
-        directRestorationCostMax.setUnit("Euro");                                 // NOI18N
+        directRestorationCostMax.setDisplayName("Direct restoration cost (Max)");   // NOI18N
+        directRestorationCostMax.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        directRestorationCostMax.setUnit("Euro");                                   // NOI18N
 
         final Value lostBuildingsMin = new Value();
-        lostBuildingsMin.setDisplayName("Lost buildings (Min)"); // NOI18N
-        lostBuildingsMin.setIconResource("home_lost_16.png");    // NOI18N
-        lostBuildingsMin.setUnit("Buildings");                   // NOI18N
+        lostBuildingsMin.setDisplayName("Lost buildings (Min)");               // NOI18N
+        lostBuildingsMin.setIconResource("images/glyphicons-90-building.png"); // NOI18N
+        lostBuildingsMin.setUnit("Buildings");                                 // NOI18N
         final Value lostBuildingsAvg = new Value();
-        lostBuildingsAvg.setDisplayName("Lost buildings (Avg)"); // NOI18N
-        lostBuildingsAvg.setIconResource("home_lost_16.png");    // NOI18N
-        lostBuildingsAvg.setUnit("Buildings");                   // NOI18N
+        lostBuildingsAvg.setDisplayName("Lost buildings (Avg)");               // NOI18N
+        lostBuildingsAvg.setIconResource("images/glyphicons-90-building.png"); // NOI18N
+        lostBuildingsAvg.setUnit("Buildings");                                 // NOI18N
         final Value lostBuildingsMax = new Value();
-        lostBuildingsMax.setDisplayName("Lost buildings (Max)"); // NOI18N
-        lostBuildingsMax.setIconResource("home_lost_16.png");    // NOI18N
-        lostBuildingsMax.setUnit("Buildings");                   // NOI18N
+        lostBuildingsMax.setDisplayName("Lost buildings (Max)");               // NOI18N
+        lostBuildingsMax.setIconResource("images/glyphicons-90-building.png"); // NOI18N
+        lostBuildingsMax.setUnit("Buildings");                                 // NOI18N
 
         final Value unsafeBuildingsMin = new Value();
-        unsafeBuildingsMin.setDisplayName("Unsafe buildings (Min)"); // NOI18N
-        unsafeBuildingsMin.setIconResource("home_unsafe_16.png");    // NOI18N
-        unsafeBuildingsMin.setUnit("Buildings");                     // NOI18N
+        unsafeBuildingsMin.setDisplayName("Unsafe buildings (Min)");             // NOI18N
+        unsafeBuildingsMin.setIconResource("images/glyphicons-90-building.png"); // NOI18N
+        unsafeBuildingsMin.setUnit("Buildings");                                 // NOI18N
         final Value unsafeBuildingsAvg = new Value();
-        unsafeBuildingsAvg.setDisplayName("Unsafe buildings (Avg)"); // NOI18N
-        unsafeBuildingsAvg.setIconResource("home_unsafe_16.png");    // NOI18N
-        unsafeBuildingsAvg.setUnit("Buildings");                     // NOI18N
+        unsafeBuildingsAvg.setDisplayName("Unsafe buildings (Avg)");             // NOI18N
+        unsafeBuildingsAvg.setIconResource("images/glyphicons-90-building.png"); // NOI18N
+        unsafeBuildingsAvg.setUnit("Buildings");                                 // NOI18N
         final Value unsafeBuildingsMax = new Value();
-        unsafeBuildingsMax.setDisplayName("Unsafe buildings (Max)"); // NOI18N
-        unsafeBuildingsMax.setIconResource("home_unsafe_16.png");    // NOI18N
-        unsafeBuildingsMax.setUnit("Buildings");                     // NOI18N
+        unsafeBuildingsMax.setDisplayName("Unsafe buildings (Max)");             // NOI18N
+        unsafeBuildingsMax.setIconResource("images/glyphicons-90-building.png"); // NOI18N
+        unsafeBuildingsMax.setUnit("Buildings");                                 // NOI18N
 
         final Value totalRetrofittingCost = new Value();
-        totalRetrofittingCost.setDisplayName("Total retrofitting cost");  // NOI18N
-        totalRetrofittingCost.setIconResource("money_total_evac_16.png"); // NOI18N
-        totalRetrofittingCost.setUnit("Euro");                            // NOI18N
+        totalRetrofittingCost.setDisplayName("Total retrofitting cost");         // NOI18N
+        totalRetrofittingCost.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        totalRetrofittingCost.setUnit("Euro");                                   // NOI18N
 
         final Value noOfRetrofittedBuildings = new Value();
-        noOfRetrofittedBuildings.setDisplayName("Retrofitted buildings");    // NOI18N
-        noOfRetrofittedBuildings.setIconResource("money_total_evac_16.png"); // NOI18N
-        noOfRetrofittedBuildings.setUnit("Buildings");                       // NOI18N
+        noOfRetrofittedBuildings.setDisplayName("Retrofitted buildings");              // NOI18N
+        noOfRetrofittedBuildings.setIconResource("images/glyphicons-90-building.png"); // NOI18N
+        noOfRetrofittedBuildings.setUnit("Buildings");                                 // NOI18N
 
         final Value preemtiveEvacuationCost = new Value();
-        preemtiveEvacuationCost.setDisplayName("Preemptive evacuation cost"); // NOI18N
-        preemtiveEvacuationCost.setIconResource("money_total_evac_16.png");   // NOI18N
-        preemtiveEvacuationCost.setUnit("Euro");                              // NOI18N
+        preemtiveEvacuationCost.setDisplayName("Preemptive evacuation cost");      // NOI18N
+        preemtiveEvacuationCost.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
+        preemtiveEvacuationCost.setUnit("Euro");                                   // NOI18N
 
         final Value noOfEvacuated = new Value();
-        noOfEvacuated.setDisplayName("Number of evacuated");      // NOI18N
-        noOfEvacuated.setIconResource("money_total_evac_16.png"); // NOI18N
-        noOfEvacuated.setUnit("People");                          // NOI18N
+        noOfEvacuated.setDisplayName("Number of evacuated");               // NOI18N
+        noOfEvacuated.setIconResource("images/glyphicons-500-family.png"); // NOI18N
+        noOfEvacuated.setUnit("People");                                   // NOI18N
 
         final Casualties casualties = new Casualties();
-        casualties.setDisplayName("Casualties");     // NOI18N
-        casualties.setIconResource("flower_16.png"); // NOI18N
+        casualties.setDisplayName("Casualties");                       // NOI18N
+        casualties.setIconResource("images/glyphicons-291-skull.png"); // NOI18N
         casualties.setNoOfDeadMin(noOfDeadMin);
         casualties.setNoOfInjuredMin(noOfInjuredMin);
         casualties.setNoOfHomelessMin(noOfHomelessMin);
@@ -382,8 +382,8 @@ public class PilotDHelper {
         casualties.setNoOfHomelessMax(noOfHomelessMax);
 
         final Cost cost = new Cost();
-        cost.setDisplayName("Economic cost");  // NOI18N
-        cost.setIconResource("dollar_16.png"); // NOI18N
+        cost.setDisplayName("Economic cost");                   // NOI18N
+        cost.setIconResource("images/glyphicons-227-euro.png"); // NOI18N
         cost.setDirectDamageCostMin(directDamageCostMin);
         cost.setIndirectDamageCostMin(indirectDamageCostMin);
         cost.setDirectRestorationCostMin(directRestorationCostMin);
@@ -395,8 +395,8 @@ public class PilotDHelper {
         cost.setDirectRestorationCostMax(directRestorationCostMax);
 
         final DamagedBuildings damagedBuildings = new DamagedBuildings();
-        damagedBuildings.setDisplayName("Damaged buildings"); // NOI18N
-        damagedBuildings.setIconResource("home_16.png");      // NOI18N
+        damagedBuildings.setDisplayName("Damaged buildings");                  // NOI18N
+        damagedBuildings.setIconResource("images/glyphicons-90-building.png"); // NOI18N
         damagedBuildings.setLostBuildingsMin(lostBuildingsMin);
         damagedBuildings.setUnsafeBuildingsMin(unsafeBuildingsMin);
         damagedBuildings.setLostBuildingsAvg(lostBuildingsAvg);
@@ -405,14 +405,14 @@ public class PilotDHelper {
         damagedBuildings.setUnsafeBuildingsMax(unsafeBuildingsMax);
 
         final BuildingRetrofitting buildingRetrofitting = new BuildingRetrofitting();
-        buildingRetrofitting.setDisplayName("Building retrofitting"); // NOI18N
-        buildingRetrofitting.setIconResource("money_evac_16.png");    // NOI18N
+        buildingRetrofitting.setDisplayName("Building retrofitting");                     // NOI18N
+        buildingRetrofitting.setIconResource("images/glyphicons-376-classic-hammer.png"); // NOI18N
         buildingRetrofitting.setTotalRetrofittingCost(totalRetrofittingCost);
         buildingRetrofitting.setNoOfRetrofittedBuildings(noOfRetrofittedBuildings);
 
         final Evacuation evacuation = new Evacuation();
-        evacuation.setDisplayName("Evacuation");         // NOI18N
-        evacuation.setIconResource("money_evac_16.png"); // NOI18N
+        evacuation.setDisplayName("Evacuation");                                // NOI18N
+        evacuation.setIconResource("images/glyphicons-592-person-running.png"); // NOI18N
         evacuation.setPreemtiveEvacuationCost(preemtiveEvacuationCost);
         evacuation.setNoOfEvacuatedPeople(noOfEvacuated);
 
